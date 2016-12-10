@@ -1,11 +1,4 @@
-var renderToString = require('react-dom/server');
-var RouterContext = require('react-dom/server');
-var match = require('react-router')
-
-
 var express = require('express');
-//var routes = require('./routes');
-//var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var bodyParser = require('body-parser')
