@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+	<meta name="viewport" content="width=960">
+
+	<title>JSONOMATIC</title>
+	<meta name="description" content="blah blah">
+	<meta name="keywords" content="">
+	<meta name="copyright" content="guest+guest">
+	<link rel="shortcut icon" type="image/png" href="../../images/favicon.png">
+
+	<meta property="og:title" content="xxx">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://www.jsonomatic.com/">
+	<meta property="og:image" content="x.jpg">
+
+	<link href="../../stylesheets/style.css" media="screen" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+</head>
+<body>
+				
+
+<aside class="left">
+	<img src="../../images/logo-white.svg"/>
+</aside>
+<aside class="right">
+	<div class="menu-icon">
+		<span class="stripe"></span>
+		<span class="stripe"></span>
+		<span class="stripe"></span>
+	</div>
+	<h3>Object Types</h3>
+	<div id="typesDescr">
+		<dl>
+			<dt>&lt;%FIRSTNAME%&gt;</dt><dd>A random first name</dd>
+			<dt>&lt;%LASTNAME%&gt;</dt><dd>A random surname</dd>
+			<dt>&lt;%COMPANY%&gt;</dt><dd>A randomly created company name</dd>
+			<dt>&lt;%EMAIL%&gt;</dt><dd>creates an email in the format &lt;%FIRSTNAME%&gt;.&lt;%LASTNAME%&gt;@&lt;%COMPANY%&gt;.com if created in the same object, or creates a random email if not</dd>
+			<dt>&lt;%INT(arg1, arg2)%&gt;</dt><dd>creates a random integer in the range between arg1 and arg2</dd>
+			<dt>&lt;%DATE(arg1, arg2)%&gt;</dt><dd>creates a random date between date1 and date2</dd>	
+			<dt>&lt;%PHONE%&gt;</dt><dd>creates a random 10 digit phone number</dd>
+			<dt>&lt;%PHONE2%&gt;</dt><dd>creates random 10 digit phone number, formatted (000) 000 0000</dd>
+			<dt>&lt;%TEXT(arg1)%&gt;</dt><dd>creates arg1 words of random lorem ipsum text</dd>
+		</dl>
+	</div>
+
+</aside>
+
+<div class="container">
+	<section id="title" class="clear">
+		<h1>jsonomatic</h1>
+		<h2>create json objects to fill your test databases with users</h2>
+	</section>
+
+	<section id="editorOutput">
+		<input id="repeats" value="10">
+
+		<input id="repeatsRange" type="range"  value="10" min="2" max="1000" step="1"/>
+	
+		<div id="editorContainer">
+
+			<div id="editor">{   
+				"name": { 
+					"first":"&lt;%FIRSTNAME%&gt;", 
+					"last":"&lt;%LASTNAME%&gt;" 
+				},
+				"email": "&lt;%EMAIL%&gt;",
+				"int" : "&lt;%INT(1, 5)%&gt;",
+				"date" : "&lt;%DATE('11 Mar 1980',Date.now())%&gt;",
+				"phone" : "&lt;%PHONE%&gt;",
+				"phone2" : "&lt;%PHONE2%&gt;"
+				}
+			</div>
+
+			<textarea id="outputPane">output...</textarea>
+			
+			<div id="statusBar"></div>
+	
+		</div>
+	
+	
+	</section>
+
+	<section id="controls">
+		<button id="buttonGenerate">generate<!-- <img src="../../images/gears.svg"/><img src="../../images/gears2.svg"/> --></button>
+		<button id="buttonSelectAll">select all</button>
+		<button id="buttonCopyClipboard" class="btn-icon"><img src="../../images/icon-clipboard.svg"/></button>
+		<button id="buttonDownloadJSON" class="btn-icon"><img src="../../images/icon-download.svg"/></button>
+	</section>
+
+	<section id="instructions">
+		<div class="container">
+			<div id="steps">
+				<div class="step">
+					<div class="left">
+						<div class="number">> 01</div>
+						<h3>Create Your Base JSON Object</h3>
+						<p>Use variables between the &lt;% %&gt; tags. Enter valid JSON (i.e. everything enclosed within "  ") but the code hinter will show if you make a mistake...</p>
+					</div>
+					<div class="right"><pre class="explainBox">>hello</pre></div>
+				</div>
+				<div class="step">
+					<div class="left">
+						<div class="number">> 02</div>
+						<h3>Select the number of objects to create</h3>
+						<p>Maximum is 10000</p>
+					</div>
+					<div class="right"><pre class="explainBox">>hello</pre></div>			</div>
+				<div class="step">
+					<div class="left">
+						<div class="number">> 03</div>
+						<h3>Click Generate!</h3>
+						<p>It's that easy- select all with the button and copy to the clipboard or download a verified JSON array. It's that easy.</p>
+					</div>
+					<div class="right"><pre class="explainBox">>hello</pre></div>
+				</div>
+			</div>
+			<a href="#editorOutput" id="createit" class="btn">GIVE IT A GO</a>
+		</div>
+	</section>
+
+
+
+
+	<footer>
+		<div class="content">
+			<div class="row">
+				<div class="w25 column right">
+					<a href="http://www.guestandguest.com" id="create-proposal" class="goregister">a guest+guest production</a>
+	
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../../javascripts/moment.min.js"></script>
+	<script src="../../javascripts/FileSaver.js"></script>
+
+	<script src="../../javascripts/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+
+
+</body>
+</html>
