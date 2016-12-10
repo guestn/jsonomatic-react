@@ -1,28 +1,6 @@
-//const path = require('path');
-//e from 'http';
-//const Express = require('express');
-//const React = require('react');
 var renderToString = require('react-dom/server');
 var RouterContext = require('react-dom/server');
-//import { match, RouterContext } from 'react-router';
 var match = require('react-router')
-//const routes = require('./routes');
-//const NotFoundPage = require('./components/NotFoundPage');
-
-/*
-// initialize the server and configure support for ejs templates
-const app = new Express();
-const server = new Server(app);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, 'static')));
-*/
-
-
-
-
 
 
 var express = require('express');
