@@ -40,7 +40,9 @@ app.use(bodyParser.urlencoded({ extended: true}));     // to support URL-encoded
 //app.use(express.methodOverride());
 //app.use(app.router);
 app.use(express.static(path.join(__dirname, 'static')));
-//app.use(express.favicon("public/images/favicon.png")); 
+app.use(favicon(__dirname + '/static/favicon.png'));
+
+//app.use(express.favicon("favicon.png")); 
 
 
 

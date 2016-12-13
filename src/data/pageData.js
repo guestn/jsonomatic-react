@@ -8,7 +8,7 @@ const pageData = [
   {
     'id': 'settings',
     'name': 'Settings',
-    'content': 'Ut in enim lacinia, luctus augue at, iaculis urna. Nunc vitae euismod nulla. Integer blandit, justo non mattis ultrices, lorem orci pulvinar lorem, et imperdiet dui neque non mi. Suspendisse potenti. Sed eleifend justo enim, sed mollis lectus dapibus non. Donec metus lectus, sollicitudin sit amet mi at, blandit vestibulum massa. Integer consectetur eleifend diam eu malesuada. Aliquam cursus molestie quam, nec molestie magna euismod sit amet. Praesent cursus vel nulla vitae posuere. Sed aliquam, ligula vitae aliquam laoreet, risus metus pellentesque ipsum, tempor maximus dui nibh eget orci. In in venenatis lacus. Integer et tincidunt augue. Vestibulum leo tortor, semper at mauris eget, dictum accumsan quam.'
+    'content': '<div id="typesDescr"><dl><dt>&lt;%FIRSTNAME%&gt;</dt><dd>A random first name</dd><dt>&lt;%LASTNAME%&gt;</dt><dd>A random surname</dd><dt>&lt;%COMPANY%&gt;</dt><dd>A randomly created company name</dd><dt>&lt;%EMAIL%&gt;</dt><dd>creates an email in the format &lt;%FIRSTNAME%&gt;.&lt;%LASTNAME%&gt;@&lt;%COMPANY%&gt;.com if created in the same object, or creates a random email if not</dd><dt>&lt;%INT(arg1, arg2)%&gt;</dt><dd>creates a random integer in the range between arg1 and arg2</dd><dt>&lt;%DATE(arg1, arg2)%&gt;</dt><dd>creates a random date between date1 and date2</dd>	<dt>&lt;%PHONE%&gt;</dt><dd>creates a random 10 digit phone number</dd><dt>&lt;%PHONE2%&gt;</dt><dd>creates random 10 digit phone number, formatted (000) 000 0000</dd><dt>&lt;%TEXT(arg1)%&gt;</dt><dd>creates arg1 words of random lorem ipsum text</dd></dl></div>'
   },
   {
     'id': 'menu-3',
