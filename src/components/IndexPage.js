@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import AthletePreview from './AthletePreview';
-import athletes from '../data/athletes';
-import AthletesMenu from './AthletesMenu';
+//import AthletePreview from './AthletePreview';
+import pageData from '../data/pageData';
+import MainMenu from './MainMenu';
 import brace from 'brace';
 import AceEditor from 'react-ace';
 import RangeSlider from './RangeSlider';
@@ -134,13 +134,15 @@ export default class IndexPage extends React.Component {
 
     return (
       <div className="home">
-        <AthletesMenu/>
+        <MainMenu/>
           
       	<div className="main-pane">
-      		{this.state.sliderValue}
-      	
-      		<RangeSlider value={this.state.sliderValue} handleSlider={this.handleSlider.bind(this)}/>
-      	
+      		<div className="rangeslider-container">
+      			<div class="rangeslider-container-title">Number of Objects</div>
+      			<div className="rangeslider-value">{this.state.sliderValue}</div>
+						<RangeSlider value={this.state.sliderValue} handleSlider={this.handleSlider.bind(this)}/>
+					</div>
+					
 					<AceEditor
 						mode="java"
 						theme="github"
@@ -151,14 +153,22 @@ export default class IndexPage extends React.Component {
 						editorProps={{$blockScrolling: true}}
 						value={this.state.editorValue}
 					/>
+					
 					<textarea className="outputPane cf" value={this.state.outputValue} onChange={this.onOutputChanged.bind(this)}/>  
-				 					<button className="square" onClick={this.generateClicked.bind(this)}>Generate</button>
+					<div className="button-container">
+						<button className="btn-text btn-generate" onClick={this.generateClicked.bind(this)}>Generate</button>
+						<button className="btn-icon btn-copy" onClick={this.generateClicked.bind(this)}>Copy</button>
+						<button className="btn-icon btn-download" onClick={this.generateClicked.bind(this)}>DL</button>
+				 	</div>
+				 	
 					<div>{this.state.generateClicked}</div>
-	        <div className="athletes-selector">
-	          {athletes.map(athleteData => <AthletePreview key={athleteData.id} {...athleteData} />)}
-	        </div>
+
         </div>
       </div>
     );
   }
 }
+
+/* 	        <div className="athletes-selector">
+	          {athletes.map(athleteData => <AthletePreview key={athleteData.id} {...athleteData} />)}
+	        </div> */

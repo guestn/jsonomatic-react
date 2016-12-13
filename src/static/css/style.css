@@ -7,9 +7,12 @@ fieldset,input{appearance:none;border:0;padding:0;margin:0;min-width:0;font-size
 input::-ms-clear{display:none}input[type=number]{-moz-appearance:textfield}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{appearance:none}
 svg{display:inline-flex}img{max-width:100%;display:block}
+a:hover,a:focus;a:active,button:active,button:focus,:focus{outline:0}
+
+/* hilite: #F15743 */
 
 html {
-  color: #030303;
+  color: white;
   font: caption;
   padding: 0px;
 }
@@ -20,8 +23,7 @@ body {
 		font-family: 'Orkney';
 }
 a {
-  color: #1f4ba0;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .cf:before,
@@ -32,10 +34,6 @@ a {
 .cf:after {
     clear: both;
 }
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
 .cf {
     *zoom: 1;
 }
@@ -44,6 +42,8 @@ a {
 	margin: 20px
 }
 
+
+
 header,
 .athlete header {
 	background: #fff;
@@ -51,21 +51,60 @@ header,
 	top:0;
 	left:0;
 	width:calc(100% - 40px);
-  padding: 2em;
+  padding: 0 4em 0 2em;
   margin: 20px;
   height: 80px;
   overflow: hidden;
   z-index:10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-header .logo {
-  display: block;
+header .site-logo {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+}
 
+header .site-logo h1 {
+	display: inline-block;
+	color:black;
+	font-size: 2.25em;
+	line-height: 0.05;
+}
+
+header .site-logo h1 > span {
+	color: #F15743;
+}
+
+header .site-logo .logo {
+	margin-right: 20px;
+}
+
+header h2 {
+	display: inline-block;
+	color:black;
+	line-height: 0.05;
+}
+
+.rangeslider-container {
+	display: flex;
+	background: rgba(255,255,255,0.4);
+	height: 128px;
+	flex-direction: column;
+	justify-content: center;
+	padding:20px 40px;
+	
+}
+.rangeslider-value {
+	font-size: 40px;
+	color: black;
 }
 
 .app-content {
 	margin-top: 80px;
-  border: 1px solid green;
 }
 
 footer {
@@ -100,9 +139,8 @@ footer p {
   font-weight: bold;
 }
 
-.home .main-pane {
-	margin: 20px 0 0 200px;
-	background: #f4f4f4;
+.main-pane {
+	margin: 100px 0 0 200px;
 }
 
 .home .athletes-selector {
@@ -156,32 +194,107 @@ footer p {
 .home .ace_editor {
 	float:left;
 	width: 50%;
+	background: rgba(255,255,255,0.2);
 }
 
 .home .outputPane {
 	float:left;
 	width:50%;
 	height: 500px;
-
+	background: rgba(255,255,255,0.15);
+	border: none;
 }
 
-nav.atheletes-menu {
+button {
+	height: 80px;
+	display: inline-block;
+	background: #F15743;
+	border: none;
+	position: relative;
+	font-family: 'Orkney', sans-serif;
+	text-transform: uppercase;
+}
+.btn-text {
+	padding: 0 50px;
+	color: white;
+	font-size: 20px;
+}
+
+.btn-icon {
+	width: 80px;
+}
+
+.btn-generate {
+	position: relative;
+	left: 50%;
+	transform: translate(-100%);
+}
+
+.btn-copy,
+.btn-download {
+	float: right;
+	margin-left: 2px;
+}
+
+.btn-icon {
+	background-size: 75%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	color: transparent;
+}
+.btn-icon:hover:before {
+	opacity:1;
+}
+.btn-icon:before {
+	color: white;
+	background: black;
+	position:absolute;
+	top: -33px;
+	left:0;
+	right:0;
+	margin:0 auto;
+	padding: 10px 0;
+	opacity:0;
+	text-align: center;
+	transition: opacity 0.4s;
+}
+
+.btn-download {
+	background-image: url(../img/icon-download.svg);
+}
+.btn-download:before {
+	content:'DOWNLOAD';
+}
+.btn-copy {
+	background-image: url(../img/icon-copy.svg);
+}
+.btn-copy:before {
+	content:'COPY';
+}
+
+nav.main-menu {
 	position:fixed;
 	width: 200px;
-  padding: 2em;
   text-align: center;
-  border:1px solid pink;
+  background: rgba(0,0,0,0.4);
 }
 
-nav.atheletes-menu a {
+nav.main-menu a {
 	display:block;
-  font-size: 1.6em;
-  margin: 0 1em 1em 0;
+  font-size: 1.5em;
+  padding: 1.2em 0 0 0;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  height: 64px;
 }
 
-nav.atheletes-menu a.active {
+nav.main-menu a.active {
   color: #030303;
   text-decoration: none;
+  background: #F15743;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 40%, 96% 50%, 100% 60%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 96% 50%, 100% 60%, 100% 100%, 0 100%);
 }
 
 .athlete {
@@ -201,74 +314,9 @@ nav.atheletes-menu a.active {
 
 }
 
-.athlete .picture-container {
-  margin: 0;
-  padding: 0 1em 0 1em;
-}
-
-.athlete .picture-container img {
-  border-radius: 4px;
-  border: 8px solid #fff;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-  display: inline;
-  margin: 0 0 0 1em;
-  width: 200px;
-}
-
-.athlete .picture-container h2 {
-  display: inline;
-  font-size: 3em;
-  padding: 0 0 0 .5em;
-  width: auto;
-}
-
-.athlete .flag .icon {
-  display: inline-block;
-  padding-bottom: .1em;
-  width: auto;
-}
-
-.athlete .description,
-.athlete .medals {
-  font-size: 1.6em;
-  padding: 1em;
-}
-
-.athlete .medals p {
-  font-size: 1em;
-}
 
 .athlete .medals li {
   list-style: none;
-}
-
-.athlete .medals .symbol {
-  border-radius: 50%;
-  display: inline-block;
-  font-size: .8em;
-  height: 1.6em;
-  justify-content: center;
-  margin: 5px;
-  text-align: center;
-  width: 1.6em;
-}
-
-.athlete .medals .symbol.symbol-G {
-  color: #daa520;
-  background-color: #fff6de;
-  border: 2px solid #daa520;
-}
-
-.athlete .medals .symbol.symbol-S {
-  color: #383738;
-  background-color: #b9b5b5;
-  border: 2px solid #383738;
-}
-
-.athlete .medals .symbol.symbol-B {
-  color: #6b1919;
-  background-color: #ea96a1;
-  border: 2px solid #6E1924;
 }
 
 .navigateBack {
@@ -278,35 +326,7 @@ nav.atheletes-menu a.active {
   text-decoration: none;
 }
 
-.rangeslider-horizontal {
-    height: 20px;
-    border-radius: 10px;
-    padding:0px;
-    margin: 20px 0;
-    position: relative;
-    background: #e6e6e6;
-}
 
-.rangeslider__fill {
-    height: 100%;
-    background: #27ae60;
-    border-radius: 10px;
-    top: 0;
-        display: block;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,.3);
-}
-
-.rangeslider__handle {
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-    top: -10px;
-    background: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-}
 
 
 /* slider */
@@ -337,7 +357,7 @@ input[type=range]::-webkit-slider-thumb {
     width: 25px;
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
-    background: #21cae1;
+    background: #F15743;
     margin-top: -30px;
 }
 input[type=range]:focus {

@@ -1,6 +1,6 @@
 "use strict";
 
-const athletes = [
+const pageData = [
   {
     'id': 'how-to',
     'name': 'How To',
@@ -22,4 +22,4 @@ const athletes = [
   },
  ];
 
-export default athletes;
+export default pageData;

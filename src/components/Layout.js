@@ -8,9 +8,11 @@ export default class Layout extends React.Component {
     return (
       <div className="app-container">
         <header>
-          <Link to="/">
+          <Link to="/" className="site-logo">
             <img className="logo" src="/img/JSONomatic-logo.svg"/>
+            <h1><span>JSON</span>OMATIC</h1>
           </Link>
+          <h2>Create Randomized JSON For Your Test Databases</h2>
         </header>
         <div className="app-content">{this.props.children}</div>
         <footer>
