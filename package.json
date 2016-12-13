@@ -1,7 +1,7 @@
 {
   "name": "judo-heroes",
   "version": "1.0.0",
-  "description": "Simple application to showcase how to achieve universal rendering and routing with React and Express.",
+  "description": "JSONOMATIC/  React / Express.",
   "main": "src/server.js",
   "repository": "",
   "scripts": {
@@ -12,7 +12,7 @@
     "start-dev-hmr": "node_modules/.bin/webpack-dev-server --progress --inline --hot",
     "build": "NODE_ENV=production node_modules/.bin/webpack -p"
   },
-  "author": "Luciano Mammino",
+  "author": "Nicholas Guest",
   "license": "MIT",
   "dependencies": {
     "babel-cli": "^6.11.4",
