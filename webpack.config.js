@@ -1,6 +1,6 @@
 "use strict";
 
-//const debug = process.env.NODE_ENV !== "production";
+const debug = process.env.NODE_ENV !== "production";
 
 const webpack = require('webpack');
 const path = require('path');
@@ -31,7 +31,6 @@ module.exports = {
       }
     }]
   },
-/*
   plugins: debug ? [] : [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -46,5 +45,4 @@ module.exports = {
       dead_code: true
     }),
   ]
-*/
 };
