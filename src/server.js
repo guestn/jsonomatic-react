@@ -56,17 +56,6 @@ app.use(favicon(__dirname + '/static/favicon.png'));
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // universal routing and rendering
 
 app.post('/submit', urlencodedParser, function (req, res, err) {
@@ -161,6 +150,8 @@ server.listen(port, err => {
   console.info(`Server running on http://localhost:${port} [${env}]`);
 });
 */
+const env = process.env.NODE_ENV || 'production';
+
 
 http.createServer(app).listen(app.get('port'), server_ip_address, function(){
 	console.log("Express server listening on ip "+server_ip_address+" port " + server_port);
