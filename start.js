@@ -36,5 +36,6 @@ if (cluster.isMaster) {
     });
   }
 } else {
+	require('babel-core/register')
   require('./app.js');
 }
