@@ -19,6 +19,6 @@ export default routes;
 */
 
 module.exports = [
-  '<Route path="/" handler={require("./components/App")}>{/* ... */}</Route>'
+  <Route path="/" handler={require("./server.js")}>{/* ... */}</Route>
 ]
 

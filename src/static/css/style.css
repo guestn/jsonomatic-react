@@ -1,3 +1,6 @@
+@import "./node_modules/codemirror/lib/codemirror.css";
+
+
 /*! CSS reset from benfrain/app-reset */
 *,:after,:before{box-sizing:inherit}html{box-sizing:border-box}
 *{user-select:none;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-tap-highlight-color:transparent}
@@ -191,9 +194,10 @@ footer p {
   vertical-align: middle;
 }
 
-.home .ace_editor {
+.home .ReactCodeMirror {
 	float:left;
 	width: 50%;
+	height: 500px;
 	background: rgba(255,255,255,0.2);
 }
 

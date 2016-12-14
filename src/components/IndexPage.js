@@ -1,25 +1,38 @@
 'use strict';
 
 import React from 'react';
-//import AthletePreview from './AthletePreview';
 import pageData from '../data/pageData';
 import MainMenu from './MainMenu';
 
 
 import RangeSlider from './RangeSlider';
 import Button from './Button';
-import { PropTypes } from 'react'
-import 'whatwg-fetch'
+import { PropTypes } from 'react';
+import 'whatwg-fetch';
+import CodeMirror from 'react-codemirror';
 
+
+
+/*
 
 if (typeof window != 'undefined') {
-var brace = require('brace');
-var AceEditor= require('react-ace');
-
-require('brace/mode/java');
-require('brace/theme/github');
-
+	var brace = require('brace');
+	var AceEditor= require('react-ace');
+	require('brace/mode/java');
+	require('brace/theme/github');
 }
+*/
+//if (typeof window != 'undefined') {
+/*
+
+	var AceEditor  = require('react-ace-wrapper');
+
+	require('brace/mode/java');
+	require('brace/theme/github');
+*/
+
+
+//}
 /*
 import brace from 'brace';
 import AceEditor from 'react-ace';
@@ -27,7 +40,6 @@ import AceEditor from 'react-ace';
 import 'brace/mode/java';
 import 'brace/theme/github';
 */
-
 
 
 export default class IndexPage extends React.Component {
@@ -62,7 +74,7 @@ export default class IndexPage extends React.Component {
 		this.setState({
 			editorValue: value
 		})
-		console.log(this.state.editorValue)
+	console.log('this.state.editorValue',this.state.editorValue)
 	}
 	
 	onOutputChanged(value) {
@@ -81,12 +93,10 @@ export default class IndexPage extends React.Component {
 		var Jobj = JSON.stringify(output)
 		output = output.trim();
 		
-	console.log(output)
+		console.log(output)
 	
-	var payload = {output: output, repeats: repeats};
-	
-
-		
+		var payload = {output: output, repeats: repeats};
+			
 		var request = new Request('/submit', {
 			method: 'POST', 
 			headers: new Headers({
@@ -103,11 +113,12 @@ export default class IndexPage extends React.Component {
 		fetch(request).then((response) => {
 			//JSON.parse(data.body);
 			//data = JSON.stringify(data, null, 4)
-
+			console.log('response',response)
 			return response.json();
 
 		})
 		.then((data) => {
+			console.log('data', data)
 			//data = JSON.parse(data);
 			//data = JSON.stringify(data, null, 4);
 
@@ -120,25 +131,6 @@ export default class IndexPage extends React.Component {
 				console.log(err)
 		});		
 		
-		/*fire it to the backend*/
-/*
-	    $.ajax({
-		  type: "POST",
-		  url: '/submit',
-		  data: {output: output, repeats: repeats},
-		  //success: success,
-		  dataType: 'text'
-		}).success(function(data){
-			console.log(data);
-			data = JSON.parse(data);
-			data = JSON.stringify(data, null, 4);
-			$('#outputPane').val(data);
-			
-			var msg = repeats.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+' objects added successfully'
-			displayMessage(msg);
-		});
-		
-*/
 	}
 	
   render() {
@@ -147,23 +139,21 @@ export default class IndexPage extends React.Component {
     return (
       <div className="home">
         <MainMenu/>
-          
-      	<div className="main-pane">
+        
+        <div className="main-pane">
       		<div className="rangeslider-container">
-      			<div class="rangeslider-container-title">Number of Objects</div>
+      			<div className="rangeslider-container-title">Number of Objects</div>
       			<div className="rangeslider-value">{this.state.sliderValue}</div>
 						<RangeSlider value={this.state.sliderValue} handleSlider={this.handleSlider.bind(this)}/>
 					</div>
 					
-					<AceEditor
-						mode="java"
-						theme="github"
+
+					<CodeMirror 
+						value={this.state.editorValue} 
 						onChange={this.onEditorChanged.bind(this)}
-						name="editor"
-						height="500px"
-						width="50%"
-						editorProps={{$blockScrolling: true}}
-						value={this.state.editorValue}
+						options={{
+            	lineNumbers: true,
+        		}}
 					/>
 					
 					<textarea className="outputPane cf" value={this.state.outputValue} onChange={this.onOutputChanged.bind(this)}/>  
@@ -176,11 +166,9 @@ export default class IndexPage extends React.Component {
 					<div>{this.state.generateClicked}</div>
 
         </div>
+
+          
       </div>
     );
   }
 }
-
-/* 	        <div className="athletes-selector">
-	          {athletes.map(athleteData => <AthletePreview key={athleteData.id} {...athleteData} />)}
-	        </div> */
