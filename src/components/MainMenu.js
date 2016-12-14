@@ -1,14 +1,14 @@
 'use strict';
 
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 import pageData from '../data/pageData';
 
 export default class MainMenu extends React.Component {
   render() {
     return (
       <nav className="main-menu">
-      	<Link to="/" activeClassName="active">Home</Link>
+      	<IndexLink to="/" {...this.props} activeClassName="active">Home</IndexLink>
         {pageData.map(data => {
           return <Link key={data.id} to={`/${data.id}`} activeClassName="active">
             {data.name}

@@ -13,35 +13,6 @@ import CodeMirror from 'react-codemirror';
 
 
 
-/*
-
-if (typeof window != 'undefined') {
-	var brace = require('brace');
-	var AceEditor= require('react-ace');
-	require('brace/mode/java');
-	require('brace/theme/github');
-}
-*/
-//if (typeof window != 'undefined') {
-/*
-
-	var AceEditor  = require('react-ace-wrapper');
-
-	require('brace/mode/java');
-	require('brace/theme/github');
-*/
-
-
-//}
-/*
-import brace from 'brace';
-import AceEditor from 'react-ace';
-
-import 'brace/mode/java';
-import 'brace/theme/github';
-*/
-
-
 export default class IndexPage extends React.Component {
 	constructor(props) {
 		super(props)

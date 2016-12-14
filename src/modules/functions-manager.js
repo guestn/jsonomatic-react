@@ -9,11 +9,11 @@ exports.process = function(req, res) {
 		
 		var repeats = req.body.repeats;	
 
-	    var Jobj = JSON.parse(jsonInput); 
+	  var Jobj = JSON.parse(jsonInput); 
 	    
-	    /* initialise the random arrays: */
+	   /* initialise the random arrays: */
 	    
-	    var firstname = AY.firstname;
+	  var firstname = AY.firstname;
 		var lastname = AY.lastname;
 		var company = AY.company;
 		var lorem = AY.lorem;
@@ -28,8 +28,6 @@ exports.process = function(req, res) {
 			for(var item in randomArray){
 				randSelect[item] = Math.floor((Math.random() * randomArray[item].length));
 			};
-
-			
 			
 			var fname="", lname = "", email ="", l = "", odate = "", phone="", phone2 = "";
 			var o = JSON.parse(jsonInput);
