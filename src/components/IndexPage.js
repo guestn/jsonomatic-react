@@ -4,18 +4,30 @@ import React from 'react';
 //import AthletePreview from './AthletePreview';
 import pageData from '../data/pageData';
 import MainMenu from './MainMenu';
-import brace from 'brace';
-import AceEditor from 'react-ace';
+
+
 import RangeSlider from './RangeSlider';
 import Button from './Button';
 import { PropTypes } from 'react'
 import 'whatwg-fetch'
 
 
+if (typeof window != 'undefined') {
+var brace = require('brace');
+var AceEditor= require('react-ace');
 
+require('brace/mode/java');
+require('brace/theme/github');
+
+}
+/*
+import brace from 'brace';
+import AceEditor from 'react-ace';
 
 import 'brace/mode/java';
 import 'brace/theme/github';
+*/
+
 
 
 export default class IndexPage extends React.Component {

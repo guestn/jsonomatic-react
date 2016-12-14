@@ -22,10 +22,10 @@ exports.process = function(req, res) {
 			
 		var finaloutput = [];
 		
-		for(n=0; n < repeats; n++) {
+		for(var n=0; n < repeats; n++) {
 			var randSelect = {};
 			//set up array of random selections for each iteration:
-			for(item in randomArray){
+			for(var item in randomArray){
 				randSelect[item] = Math.floor((Math.random() * randomArray[item].length));
 			};
 
@@ -62,6 +62,8 @@ exports.process = function(req, res) {
 				};
 				return txt;
 			};
+			
+			var fname, lname, cmpny;
 
 			
 			function FIRSTNAME() {
@@ -73,7 +75,7 @@ exports.process = function(req, res) {
 			}
 	
 			function COMPANY() {
-				return cpmny = randomArray.company[randSelect.company];
+				return cmpny = randomArray.company[randSelect.company];
 			}
 			
 			fname = FIRSTNAME();
@@ -109,7 +111,7 @@ exports.process = function(req, res) {
 
 		/* Traverse tree function (and execute relevant utility functions) */		
 	
-			traverso = function() {
+			var traverso = function() {
 				traverse(o).forEach(function (x) {
 					
 					// Only run functions at all if they sit between the correct tags <% %> */
@@ -168,7 +170,7 @@ exports.process = function(req, res) {
 			
 			o = traverso();
 			
-			x = o;
+			var x = o;
 
 
 			
@@ -177,7 +179,7 @@ exports.process = function(req, res) {
 		};
 		
 
-		output = JSON.stringify(finaloutput);
+		var output = JSON.stringify(finaloutput);
 
 		res.json(output);
 

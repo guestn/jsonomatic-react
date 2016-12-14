@@ -9,6 +9,16 @@ var favicon = require('serve-favicon');
 var methodoverride = require('method-override');
 var FM = require('./modules/functions-manager');
 
+var React = require('react')
+//var Router = require('react-router')
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+
+import NotFoundPage from './components/NotFoundPage';
+
+
+var routes = require('./reactroutes')
+
 
 
 var app = express();
@@ -67,8 +77,8 @@ app.post('/submit', urlencodedParser, function (req, res, err) {
    
 });
 
+/*
 app.get('/', function(req, res){
-	console.log('hi');
 	let markup;
 	
 	 //if (renderProps) {
@@ -80,10 +90,20 @@ app.get('/', function(req, res){
       markup = renderToString('<NotFoundPage/>');
       res.status(404);
     }
-*/
-	
+
 	res.render('index.ejs',{markup})
 });
+*/
+
+/*
+app.use(function(req, res, next) {
+  var router = Router.create({location: req.url, routes: routes})
+  router.run(function(Handler, state) {
+    var html = React.renderToString('<Handler/>')
+    return res.render('index.ejs', {html: html})
+  })
+})
+*/
 
 /*
 app.get('/settings', function(req,res){
@@ -96,7 +116,7 @@ app.get('/settings', function(req,res){
 */
 	
 
-/*
+
 app.get('*', (req, res) => {
   match(
     { routes, location: req.url },
@@ -116,10 +136,10 @@ app.get('*', (req, res) => {
       let markup;
       if (renderProps) {
         // if the current route matched we have renderProps
-        markup = renderToString('<RouterContext {...renderProps}/>');
+        markup = renderToString(<RouterContext {...renderProps}/>);
       } else {
         // otherwise we can render a 404 page
-        markup = renderToString('<NotFoundPage/>');
+        markup = renderToString(<NotFoundPage/>);
         res.status(404);
       }
 
@@ -128,7 +148,7 @@ app.get('*', (req, res) => {
     }
   );
 });
-*/
+
 
 // start the server
 /*
