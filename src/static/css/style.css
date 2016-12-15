@@ -41,14 +41,17 @@ a {
     *zoom: 1;
 }
 
+h2 {
+	font-size: 20px;
+}
+
 #main {
 	margin: 20px
 }
 
 
 
-header,
-.athlete header {
+header {
 	background: #fff;
 	position: fixed;
 	top:0;
@@ -92,6 +95,18 @@ header h2 {
 	line-height: 0.05;
 }
 
+.statusMessage {
+	position: absolute;
+	top: 128px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #F15743;
+	color: white;
+	padding: 10px;
+	z-index: 20;
+	font-size: 16px;
+}
+
 .rangeslider-container {
 	display: flex;
 	background: rgba(255,255,255,0.4);
@@ -101,9 +116,21 @@ header h2 {
 	padding:20px 40px;
 	
 }
+
+.rangeslider-container-title {
+	position: relative;
+	top: 20px;
+	font-size: 20px;
+
+}
+	
 .rangeslider-value {
+	display: inline-block;
+	position: relative;
+	top: 30px;
 	font-size: 40px;
 	color: black;
+	
 }
 
 .app-content {
@@ -143,6 +170,7 @@ footer p {
 }
 
 .main-pane {
+	position:relative;
 	margin: 100px 0 0 200px;
 }
 
@@ -152,47 +180,6 @@ footer p {
   margin-left: 200px;
 }
 
-.home .athletes-selector .athlete-preview {
-  border: 1px solid #ccc;
-  display: block;
-  margin: 0 1em 1em 0;
-  max-width: 100px;
-  padding: 0;
-  position: relative;
-  width: 100%;
-}
-
-.home .athletes-selector .athlete-preview img {
-  margin: 0;
-  width: 100%;
-}
-
-.home .athletes-selector .athlete-preview .name {
-  color: #030303;
-  display: inline-block;
-  font-size: 1.6em;
-  overflow: hidden;
-  padding: .2em;
-  text-align: center;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-}
-
-.home .athletes-selector .athlete-preview .medals-count {
-  background: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  font-weight: bold;
-  margin: .2em;
-  padding: .2em .4em;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
-  vertical-align: middle;
-}
 
 .home .ReactCodeMirror {
 	float:left;
@@ -207,6 +194,11 @@ footer p {
 	height: 500px;
 	background: rgba(255,255,255,0.15);
 	border: none;
+	color: white;
+	font-family: monospace;
+	font-size: 1rem;
+	padding: 4px 0;
+
 }
 
 button {
@@ -226,6 +218,10 @@ button {
 
 .btn-icon {
 	width: 80px;
+}
+
+.btn-icon:disabled {
+	opacity: 0.6;
 }
 
 .btn-generate {
@@ -345,10 +341,10 @@ input[type=range] {
     border: 1px solid white;
     
     /*required for proper track sizing in FF*/
-    width: 300px;
+    width: 500px;
 }
 input[type=range]::-webkit-slider-runnable-track {
-    width: 300px;
+    width: 500px;
     height: 5px;
     background: #ddd;
     border: none;
@@ -372,7 +368,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-    width: 300px;
+    width: 500px;
     height: 5px;
     background: #ddd;
     border: none;
@@ -393,7 +389,7 @@ input[type=range]:-moz-focusring{
 }
 
 input[type=range]::-ms-track {
-    width: 300px;
+    width: 500px;
     height: 5px;
     
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -429,5 +425,19 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
+/*...... Settings Page .......*/
+
+dl dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+dl dd {
+	margin-left: 180px;
+}
 
 

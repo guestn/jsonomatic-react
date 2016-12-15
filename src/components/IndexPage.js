@@ -10,8 +10,21 @@ import Button from './Button';
 import { PropTypes } from 'react';
 import 'whatwg-fetch';
 import CodeMirror from 'react-codemirror';
+import fileDownload from 'react-file-download';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 
+const initialEditorValue = {   
+	"name": { 
+		"first":"<%FIRSTNAME%>", 
+		"last":"<%LASTNAME%>" 
+	},
+	"email": "<%EMAIL%>",
+	"int" : "<%INT(1, 5)%>",
+	"date" : "<%DATE('11 Mar 1980',Date.now())%>",
+	"phone" : "<%PHONE%>",
+	"phone2" : "<%PHONE2%>;"
+}
 
 export default class IndexPage extends React.Component {
 	constructor(props) {
@@ -22,6 +35,7 @@ export default class IndexPage extends React.Component {
 			sliderValue: null,
 			editorValue: null,
 			outputValue: null,
+			statusMessage: ''
 		}
 		
 	}
@@ -30,7 +44,7 @@ export default class IndexPage extends React.Component {
 		this.setState({
 			generateClicked: false,
 			sliderValue: 10,
-			editorValue: '{"hello folks":"hi"}',
+			editorValue: JSON.stringify(initialEditorValue, null, 2),
 			outputValue: 'output'
 		});	
 	}
@@ -50,7 +64,7 @@ export default class IndexPage extends React.Component {
 	
 	onOutputChanged(value) {
 		this.setState({
-			outputValue: value
+			outputValue: JSON.stringify(value, null, 2)
 		})
 	}
 	
@@ -90,18 +104,26 @@ export default class IndexPage extends React.Component {
 		})
 		.then((data) => {
 			console.log('data', data)
-			//data = JSON.parse(data);
-			//data = JSON.stringify(data, null, 4);
+			data = JSON.parse(data);
+			data = JSON.stringify(data, null, 2);
 
 			this.setState({
-				outputValue: data
+				outputValue: data,
+				generateClicked: true,
+				statusMessage: 'Objects Created'
 			})
 		})
 		.catch(function(err) {
-			// Error :(
 				console.log(err)
 		});		
 		
+	}
+	
+	onDownloadClicked() {
+		fileDownload(this.state.outputValue, 'filename.csv');
+		this.setState({
+			statusMessage: 'File Downloaded'
+		})
 	}
 	
   render() {
@@ -128,10 +150,16 @@ export default class IndexPage extends React.Component {
 					/>
 					
 					<textarea className="outputPane cf" value={this.state.outputValue} onChange={this.onOutputChanged.bind(this)}/>  
+					
+					<span className="statusMessage">{this.state.statusMessage}</span>
+					
 					<div className="button-container">
 						<button className="btn-text btn-generate" onClick={this.generateClicked.bind(this)}>Generate</button>
-						<button className="btn-icon btn-copy" onClick={this.generateClicked.bind(this)}>Copy</button>
-						<button className="btn-icon btn-download" onClick={this.generateClicked.bind(this)}>DL</button>
+						<CopyToClipboard text={this.state.outputValue}
+							onCopy={() => this.setState({statusMessage: 'Objects Copied to Clipboard'})}>
+							<button className="btn-icon btn-copy" disabled={!this.state.generateClicked}>Copy</button>
+						</CopyToClipboard>
+						<button className="btn-icon btn-download" onClick={this.onDownloadClicked.bind(this)} disabled={!this.state.generateClicked}>DL</button>
 				 	</div>
 				 	
 					<div>{this.state.generateClicked}</div>

@@ -24,6 +24,7 @@ export default class SecondaryPage extends React.Component {
           <section className="description">
             {data.content} 
           </section>
+          
         </div>
         <div className="navigateBack">
           <Link to="/">« Back to the index</Link>

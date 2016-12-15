@@ -81,7 +81,7 @@ exports.process = function(req, res) {
 			cmpny = COMPANY();
 			
 			function EMAIL() {
-				return email = fname.toLowerCase() + '.' + lname.toLowerCase() + '@' + cpmny.toLowerCase() + '.com';
+				return email = fname.toLowerCase() + '.' + lname.toLowerCase() + '@' + cmpny.toLowerCase() + '.com';
 			}
 			
 			function DATE(i1,i2) {
@@ -90,10 +90,10 @@ exports.process = function(req, res) {
 				if(isNaN(i1)) { i1 = i2 };
 				if(isNaN(i2)) { i2 = i1 };
 				//console.log(i1+' '+i2+' '+Math.random() * (i2 - i1));
-				date = parseInt((Math.random() * (i2 - i1)) + i1);
+				var date = parseInt((Math.random() * (i2 - i1)) + i1);
 				//console.log(date);
 				//console.log(moment(i2).format('Do MM YY'));
-				odate = moment(date).format('Do MMM YY');
+				var odate = moment(date).format('Do MMM YY');
 				//console.log(odate);
 				return odate;
 			}
@@ -130,12 +130,12 @@ exports.process = function(req, res) {
 						};
 
 						if (/\<%INT(.*?)%\>/.test(x)) {
-							u = /\<%(INT.*?)%\>/.exec(x);
+							var u = /\<%(INT.*?)%\>/.exec(x);
 							eval(u[1]);
 						};
 							
 						if(/\<%DATE(.*?)%>/.test(x)) {console.log('match')
-							p = /\<%(DATE.*?)%>/.exec(x);
+							var p = /\<%(DATE.*?)%>/.exec(x);
 							eval(p[1]);					
 						};
 
